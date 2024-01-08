@@ -1,0 +1,5 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Global_Version>1.0.0</Global_Version>
+    </PropertyGroup>
+</Project>
