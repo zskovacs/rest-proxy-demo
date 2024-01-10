@@ -1,4 +1,6 @@
-﻿namespace RestProxyDemo;
+﻿using RestProxyDemo.Converters;
+
+namespace RestProxyDemo;
 
 public class Proxy : IProxy
 {
@@ -8,11 +10,20 @@ public class Proxy : IProxy
     {
         Client = client;
     }
-    
-    
-        
-    public Task<Result> Create(CreateRequest request, CancellationToken cancellationToken = default)
+
+    public async Task Create(CreatePetRequest petRequest, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var request = petRequest.Convert();
+        Task clientCall(IApiClient c) => c.Client.AddPetAsync(request, cancellationToken);
+        await Client.CallVoidClientMethod(clientCall).ConfigureAwait(false);
+    }
+
+    public async Task<IPet> GetPetByIdAsync(long petId, CancellationToken cancellationToken = default)
+    {
+        Task<Pet> clientCall(IApiClient c) => c.Client.GetPetByIdAsync(petId, cancellationToken);
+
+        var response = await Client.CallClientMethod(clientCall).ConfigureAwait(false);
+
+        return response;
     }
 }

@@ -2,5 +2,6 @@
 
 public interface IProxy
 {
-    Task<Result> Create(CreateRequest request, CancellationToken cancellationToken = default);
+    Task Create(CreatePetRequest petRequest, CancellationToken cancellationToken = default);
+    Task<IPet> GetPetByIdAsync(long petId, CancellationToken cancellationToken = default);
 }

@@ -1,3 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using RestProxyDemo;
 
-Console.WriteLine("Hello, World!");
+const string BASEURL = "https://petstore.swagger.io";
+var proxyFactory = new ProxyFactory(BASEURL);
+var proxy = proxyFactory.Create();
+var pet = await proxy.GetPetByIdAsync(1);
+
+Console.WriteLine("END");

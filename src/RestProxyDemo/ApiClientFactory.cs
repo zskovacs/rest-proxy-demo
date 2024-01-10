@@ -11,7 +11,7 @@ internal class ApiClientFactory : ApiClientFactory<IApiClient>
         var httpClient = new HttpClient();
         //ADD CorrelationHeader
 
-        return new RestProxyDemoApiClient(httpClient);
+        return new RestProxyDemoApiClient(httpClient, BaseUrl);
     }
 
 
