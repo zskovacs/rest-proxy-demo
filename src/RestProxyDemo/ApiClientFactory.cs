@@ -1,11 +1,7 @@
 ﻿namespace RestProxyDemo;
 
-internal class ApiClientFactory : ApiClientFactory<IApiClient>
+internal class ApiClientFactory(string baseUrl) : ApiClientFactory<IApiClient>(baseUrl)
 {
-    public ApiClientFactory(string baseUrl) : base(baseUrl)
-    {
-    }
-    
     public override IApiClient CreateClient()
     {
         var httpClient = new HttpClient();
@@ -13,6 +9,4 @@ internal class ApiClientFactory : ApiClientFactory<IApiClient>
 
         return new RestProxyDemoApiClient(httpClient, BaseUrl);
     }
-
-
 }

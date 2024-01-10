@@ -1,15 +1,16 @@
 ﻿namespace RestProxyDemo;
 
-public class ProxyFactory : IProxyFactory
+public class PetProxyFactory : IPetProxyFactory
 {
     private readonly IProxyClient<IApiClient> _apiClient;
-    public ProxyFactory(string baseUrl)
+    public PetProxyFactory(string baseUrl)
     {
         var clientFactory = new ApiClientFactory(baseUrl);
         _apiClient = new ProxyClient(clientFactory);
     }
-    public IProxy Create()
+    public IPetProxy Create()
     {
-        return new Proxy(_apiClient);
+        
+        return new PetPetProxy(_apiClient);
     }
 }

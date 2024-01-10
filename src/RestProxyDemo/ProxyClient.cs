@@ -1,9 +1,3 @@
 ﻿namespace RestProxyDemo;
 
-public class ProxyClient : ProxyClientBase<IApiClient, ApiException>
-{
-    public ProxyClient(IClientFactory<IApiClient> clientFactory) : base(clientFactory)
-    {
-        
-    }
-}
+public class ProxyClient(IClientFactory<IApiClient> clientFactory) : ProxyClientBase<IApiClient, ApiException>(clientFactory);
