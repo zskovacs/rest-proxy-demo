@@ -3,7 +3,7 @@
 public abstract class ApiClientFactory<TClient>(string baseUrl) : IClientFactory<TClient>
     where TClient : IApiCommunicationClient
 {
-    public string BaseUrl { get; } = baseUrl;
+    protected string BaseUrl { get; } = baseUrl;
 
     public abstract TClient CreateClient();
 }
