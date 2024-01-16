@@ -2,10 +2,15 @@
 
 namespace RestProxyDemo;
 
-public class PetPetProxy(IProxyClient<IApiClient> client) : IPetProxy
-{
-    internal IProxyClient<IApiClient> Client { get; } = client;
+public class PetPetProxy : IPetProxy
+{ 
+    internal IProxyClient<IApiClient> Client { get; }
 
+    public PetPetProxy(IProxyClient<IApiClient> client)
+    {
+        Client = client;
+    }
+    
     public async Task Create(CreatePetRequest petRequest, CancellationToken cancellationToken = default)
     {
         var request = petRequest.Convert();

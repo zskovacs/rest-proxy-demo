@@ -1,3 +1,11 @@
-﻿namespace RestProxyDemo;
+﻿using Microsoft.Extensions.Logging;
 
-public class ProxyClient(IClientFactory<IApiClient> clientFactory) : ProxyClientBase<IApiClient, ApiException>(clientFactory);
+namespace RestProxyDemo;
+
+public class ProxyClient : ProxyClientBase<IApiClient, Common.ApiException>
+{
+    public ProxyClient(IClientFactory<IApiClient> clientFactory, ILogger logger) : base(clientFactory, logger)
+    {
+        
+    }
+}

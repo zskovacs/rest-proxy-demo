@@ -1,15 +1,25 @@
 ﻿using System.Net.Http.Headers;
+using Microsoft.Extensions.Logging;
 
 namespace RestProxyDemo;
 
-internal class ApiClientFactory(string baseUrl, string authToken) : ApiClientFactory<IApiClient>(baseUrl)
+internal class ApiClientFactory : ApiClientFactory<IApiClient>
 {
+    private readonly string _authToken;
+    private readonly ILogger _logger;
+
+    public ApiClientFactory(string baseUrl, string authToken, ILogger logger) : base(baseUrl)
+    {
+        _authToken = authToken;
+        _logger = logger;
+    }
+    
     public override IApiClient CreateClient()
     {
         var httpClient = new HttpClient();
         //ADD CorrelationHeader
-        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
 
-        return new RestProxyDemoApiClient(httpClient, BaseUrl);
+        return new RestProxyDemoApiClient(httpClient, BaseUrl, _logger);
     }
 }
