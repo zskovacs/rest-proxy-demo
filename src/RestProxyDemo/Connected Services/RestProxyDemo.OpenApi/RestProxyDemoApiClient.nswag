@@ -21,7 +21,7 @@
       "injectHttpClient": true,
       "disposeHttpClient": true,
       "protectedMethods": [],
-      "generateExceptionClasses": true,
+      "generateExceptionClasses": false,
       "exceptionClass": "ApiException",
       "wrapDtoExceptions": true,
       "useHttpClientCreationMethod": false,
@@ -94,7 +94,7 @@
       "templateDirectory": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": null,
+      "output": "RestProxyDemoApiClient.cs",
       "newLineBehavior": "Auto"
     }
   }
