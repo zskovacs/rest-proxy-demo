@@ -20,6 +20,6 @@ internal class ApiClientFactory : ApiClientFactory<IApiClient>
         //ADD CorrelationHeader
         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
 
-        return new RestProxyDemoApiClient(httpClient, BaseUrl, _logger);
+        return new CustomApiClient<Pet>(httpClient, BaseUrl);
     }
 }

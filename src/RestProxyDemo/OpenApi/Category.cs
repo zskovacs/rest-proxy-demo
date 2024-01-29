@@ -1,6 +1,7 @@
 ﻿namespace RestProxyDemo.OpenApi;
 
-public partial class Category : ICategory
+public class Category : ICategory
 {
-    
+    public long? Id { get; set; }
+    public string Name { get; set; }
 }

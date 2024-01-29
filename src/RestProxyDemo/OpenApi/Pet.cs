@@ -4,7 +4,9 @@ namespace RestProxyDemo.OpenApi;
 
 public partial class Pet : IPet
 {
-    public ICategory PetCategory => Category;
-    public ICollection<ITag> PetTags => Tags.OfType<ITag>().ToList();
-    public Status? PetStatus => (Status?)Status;
+    public ICategory PetCategory { get; }
+    public string Name { get; }
+    public ICollection<string> PhotoUrls { get; }
+    public ICollection<ITag> PetTags { get; }
+    public Status? PetStatus { get; }
 }
