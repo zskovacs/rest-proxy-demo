@@ -41,7 +41,7 @@ public abstract class ProxyClientBase<TClient, TException> : IProxyClient<TClien
         }
     }
 
-    public async Task CallVoidClientMethod(Func<TClient, Task> clientAction)
+    public async Task CallClientMethod(Func<TClient, Task> clientAction)
     {
         TClient client = ClientFactory.CreateClient();
         try

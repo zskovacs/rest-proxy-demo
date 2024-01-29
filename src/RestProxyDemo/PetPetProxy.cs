@@ -15,7 +15,7 @@ public class PetPetProxy : IPetProxy
     {
         var request = petRequest.Convert();
         Task clientCall(IApiClient c) => c.Client.AddPetAsync(request, cancellationToken);
-        await Client.CallVoidClientMethod(clientCall).ConfigureAwait(false);
+        await Client.CallClientMethod(clientCall).ConfigureAwait(false);
     }
 
     public async Task<IPet> GetPetByIdAsync(long petId, CancellationToken cancellationToken = default)
