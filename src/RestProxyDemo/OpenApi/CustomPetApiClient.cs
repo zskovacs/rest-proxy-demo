@@ -1,4 +1,4 @@
-﻿namespace RestProxyDemo.Common;
+﻿namespace RestProxyDemo.OpenApi;
 
 public class CustomPetApiClient<Pet> : CustomApiClient<Pet>, IApiClient
 {
