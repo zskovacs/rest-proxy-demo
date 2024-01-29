@@ -2,7 +2,7 @@
 
 namespace RestProxyDemo.OpenApi;
 
-public partial class Pet : IPet
+public class Pet : IPet
 {
     public ICategory PetCategory { get; }
     public string Name { get; }

@@ -2,7 +2,7 @@
 
 namespace RestProxyDemo.Common;
 
-public partial class CustomApiClient<T> : ICustomApiClient<T>, IApiCommunicationClient<ICustomApiClient<T>>
+public class CustomApiClient<T> : ICustomApiClient<T>
 {
     public string BaseUrl { get; set; }
     public CustomApiClient(HttpClient httpClient, string baseUrl)
@@ -10,9 +10,9 @@ public partial class CustomApiClient<T> : ICustomApiClient<T>, IApiCommunication
         HttpClient = httpClient;
         BaseUrl = baseUrl;
     }
-    public Task<T> Get(string url)
+    public async Task<T> Get(string url)
     {
-        return JsonConvert.DeserializeObject<T>(HttpClient.GetStringAsync(BaseUrl + url));
+        return JsonConvert.DeserializeObject<T>(await HttpClient.GetStringAsync(BaseUrl + url));
     }
 
     public Task<ICollection<T>> GetAll(string url, string order)
@@ -34,8 +34,6 @@ public partial class CustomApiClient<T> : ICustomApiClient<T>, IApiCommunication
     {
         throw new NotImplementedException();
     }
-
-    public ICustomApiClient<T> Client => this;
     
     public void Close() => HttpClient?.Dispose();
 
