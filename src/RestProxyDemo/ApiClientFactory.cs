@@ -20,6 +20,6 @@ internal class ApiClientFactory : ApiClientFactory<IApiClient>
         //ADD CorrelationHeader
         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
 
-        return new CustomPetApiClient(httpClient, BaseUrl);
+        return new CustomPetApiClient(httpClient, BaseUrl, _logger);
     }
 }
