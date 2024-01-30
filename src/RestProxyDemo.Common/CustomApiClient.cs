@@ -98,6 +98,11 @@ public abstract class CustomApiClient<T> : ICustomApiClient<T>
         return GetAll(url, CancellationToken.None);
     }
 
+    public Task Put(string url, T request, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<ICollection<T>> GetAll(string url, CancellationToken cancellationToken)
     {
         var client_ = HttpClient;
@@ -179,6 +184,11 @@ public abstract class CustomApiClient<T> : ICustomApiClient<T>
     public Task Post(string url, T request)
     {
         return Post(url, request, CancellationToken.None);
+    }
+
+    public Task Delete(string url, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task Post(string url, T request, CancellationToken cancellationToken)

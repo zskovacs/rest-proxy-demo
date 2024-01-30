@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace RestProxyDemo.OpenApi;
 
-public class CustomPetApiClient : CustomApiClient<Pet>, IApiClient
+public class CustomPetApiClient : CustomApiClient<Pet>, IApiClient, ICustomPetApiClient
 {
     private readonly ILogger _logger;
     
@@ -11,7 +11,8 @@ public class CustomPetApiClient : CustomApiClient<Pet>, IApiClient
     {
         _logger = logger;
     }
-    public ICustomApiClient<Pet> Client => this;
+    public ICustomPetApiClient Client => this;
+
     
     protected override void PrepareRequest(HttpClient client, HttpRequestMessage request, string url) => _logger.LogDebug($"SENDING to {url}:");
     protected override void PrepareRequest(HttpClient client, HttpRequestMessage request, StringBuilder urlBuilder) => _logger.LogDebug($"SENDING to");

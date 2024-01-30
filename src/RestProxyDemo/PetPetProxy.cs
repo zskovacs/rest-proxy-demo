@@ -20,7 +20,7 @@ public class PetPetProxy : IPetProxy
 
     public async Task<IPet> GetPetByIdAsync(long petId, CancellationToken cancellationToken = default)
     {
-        Task<Pet> clientCall(IApiClient c) => c.Client.Get("/petstore/get");
+        Task<Pet> clientCall(IApiClient c) => c.Client.Get("/petstore?page=10&localized=true");
 
         var response = await Client.CallClientMethod(clientCall).ConfigureAwait(false);
 
